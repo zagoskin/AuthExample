@@ -1,5 +1,6 @@
 using AuthExample.API.Configuration;
 using AuthExample.API.Constants;
+using AuthExample.API.Extensions;
 using AuthExample.Domain;
 using AuthExample.Infrastructure.Contexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -26,7 +27,7 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = builder.Configuration["Authentication:Issuer"],
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Authentication:Key"]!))
     };
-});
+}).AddApiKeySupport(); 
 
 
 

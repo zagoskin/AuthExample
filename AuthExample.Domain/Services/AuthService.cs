@@ -89,6 +89,8 @@ public class AuthService : IAuthService
 
     private void ValidatePassword(User user, LoginUserRequest request)
     {
+        if (string.IsNullOrEmpty(request.Password))
+            throw new BusinessRuleException("Password is required");
         using var hmac = new HMACSHA512(user.PasswordSalt);
         var computedHash = hmac.ComputeHash(Encoding.UTF8.GetBytes(request.Password));
         for (int i = 0; i < computedHash.Length; i++)

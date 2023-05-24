@@ -1,11 +1,12 @@
 ﻿using AuthExample.API.Constants;
 using AuthExample.Domain.Interfaces;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AuthExample.API.Controllers;
 
-[Authorize]
+[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme + ", ApiKey")]
 [Route("api/[controller]")]
 [ApiController]
 public class UserController : ControllerBase

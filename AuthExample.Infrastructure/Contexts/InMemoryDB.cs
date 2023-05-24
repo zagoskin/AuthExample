@@ -25,7 +25,7 @@ public class InMemoryDB : DbContext
             new Role { Id = guestRoleId, Name = RoleType.Guest });
 
         modelBuilder.Entity<User>().HasData(
-            new User { RoleId = adminRoleId, UserName = "AdminExample", PasswordHash = Array.Empty<byte>(), PasswordSalt = Array.Empty<byte>() },
-            new User { RoleId = guestRoleId, UserName = "GuestExample", PasswordHash = Array.Empty<byte>(), PasswordSalt = Array.Empty<byte>() });
+            new User { RoleId = adminRoleId, UserName = "AdminExample", Email = "admin@example.com", PasswordHash = Array.Empty<byte>(), PasswordSalt = Array.Empty<byte>() },
+            new User { RoleId = guestRoleId, UserName = "GuestExample", Email = "guest@example.com", PasswordHash = Array.Empty<byte>(), PasswordSalt = Array.Empty<byte>() });
     }
 }
